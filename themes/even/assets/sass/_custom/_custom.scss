@@ -2,3 +2,15 @@
 // Custom style
 // ==============================
 // You can override the variables in _variables.scss to customize the style
+
+.footer {
+  position: fixed;
+  left: 50%;
+  bottom: 2em;
+  transform: translateX(-50%);
+}
+
+#back-to-top {
+  bottom: 200px;
+  right: 70px;
+}
