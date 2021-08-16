@@ -4,15 +4,19 @@
 
 ![blog-even-hugo](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108151820998.jpg)
 
-## Hugo 中文文档 https://www.gohugo.org/
+## 参考
 
-> 如果在安装或者配置时遇到问题，可以参考此文档
+Hugo 中文文档 https://www.gohugo.org/
+
+Even 主题中文文档 https://github.com/olOwOlo/hugo-theme-even/blob/master/README-zh.md
 
 ## 搭建 Hugo 环境
 
 ### 安装 Hugo
 
 github 下载地址：https://github.com/gohugoio/hugo/releases
+
+> 如果你想要修改`themes/even/assets/`下的文件，请安装`extended`版本
 
 ### 设置环境变量
 
@@ -34,34 +38,72 @@ hugo env -v
 
 ## 构建项目
 
-> 如果此时你还没有 github 账号，请先注册一个，方便进行后续操作
+> 如果此时你还没有 github 账号，请先[注册](https://github.com/)一个，方便进行后续操作
 >
-> 注册地址：https://github.com/
+> 由于一些不可控因素，github 访问速度可能会很慢，[你可能会需要这个](https://keylol.com/t256816-1-1)
+>
+> 由于要使用 git 进行版本控制，如果还没有安装，请前往[这里](https://git-scm.com/)下载安装，使用`git --version`命令查看是否安装成功
 
-### 使用 hugo 创建基本项目
-
-```bash
-hugo new site 项目名称
-```
-
-#### 项目结构
+### 项目结构
 
 | 名称        | 说明                                           |
 | ----------- | ---------------------------------------------- |
-| archetypes/ | 包括内容类型，在创建新内容时自动生成内容的配置 |
-| content/    | 网站内容，全部使用 markdown 格式               |
-| layouts/    | 网站模板文件，决定内容如何呈现                 |
+| archetypes/ | 放置内容模板，在创建新内容时会根据模板创建文章 |
+| content/    | 博客内容，全部使用 markdown 格式               |
+| layouts/    | 博客模板文件，决定内容如何呈现                 |
 | static/     | 图片、css、js 等静态资源                       |
 | themes/     | 存放主题                                       |
-| config.toml | 项目的主配置文件(也可以使用`config.yml`)       |
+| config.toml | 项目的主配置文件(有的主题也会使用`config.yml`) |
 
-### 使用主题
+### 使用模板构建项目
 
-- 想要搭建一个美观的博客，最简单的方式就是使用主题，你可以在[这里](https://themes.gohugo.io/)浏览你想要的主题
+1. 只需要在[本仓库](https://github.com/whosydd/hugo-even-template)中点击`Use this template`，设置好仓库名称，就可以根据模板创建自己的项目仓库了
+2. 使用`git clone <仓库地址>`到本地，或者直接下载压缩包，就可以构建本地项目了
 
-- 找到想要的主题后，进入该主题页面，可以查看该主题的介绍以及使用方法，点击`Download`按钮可以跳转到 github 进行安装。
+![Screenshot of whosydd_blog_ 个人博客](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108161106992.jpg)
 
-  > 建议仔细查看主题的使用方法，一般都会提供相应的配置模板，如果页面中没有，建议可以在`themes/<主题文件夹>/exampleSite/`中查看是否有相应的配置文件
+### 使用其他主题构建项目（可选）
+
+#### 构建基本项目
+
+```bash
+hugo new site <项目名称>
+```
+
+#### 下载主题
+
+1. 前往[这里](https://themes.gohugo.io/)下载主题，每个主题都会有相应的配置文档，请仔细阅读
+
+#### 添加远程仓库
+
+1. 点击`+`选择`New repository`创建新仓库
+
+![Screenshot of GitHub](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108152320408.jpg)
+
+2. 给仓库起个名字，其他默认
+
+![Screenshot of Create a New Repository](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108152326277.jpg)
+
+3. 获取远程仓库地址后，使用下面的命令将本地项目推送到 github
+
+![Screenshot of whosydd_demo](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108152348179.jpg)
+
+```bash
+#初始化仓库
+git init
+
+#添加远程仓库
+git remote add origin <远程仓库地址>
+
+#添加文件到暂存区
+git add .
+
+#提交commit
+git commit -m 'init'
+
+#推送
+git push -u origin main
+```
 
 #### 血的教训：
 
@@ -73,12 +115,9 @@ hugo new site 项目名称
 >
 > 如果你是那 0.1%的幸运星，请**务必**告诉我你是怎么操作的！
 
-### 使用模板创建项目
-
-- github 上的模板有很多，直接搜索`hugo template`关键字就可以找到
-- [这是我自己配置的一个模板](https://github.com/whosydd/hugo-even-template)，基于 Even 主题。只是进行了简单的配置，如果你的要求不高的话，可以直接使用该模板构建博客。只需要点击`Use this template`，设置好仓库名称，就可以根据模板创建自己的项目仓库了，之后只需要将创建好的仓库`clone`到本地，在项目根目录打开终端，使用`hugo new post/hello.md`命令就可以创建博文了。
-
 ## 配置选项
+
+> 以下配置项仅针对[Even 主题](https://themes.gohugo.io/themes/hugo-theme-even/)，如果选择使用其他主题，请查阅相应的主题配置文档
 
 ### config.toml
 
@@ -125,14 +164,14 @@ title = "Blog - C'est la vie!"
   since = "2021"
 
   # 是否在归档页显示文章的总数
-  # 如果设置为false，则不会在主页显示博文的内容预览
+  # 如果设置为false，则不会在主页显示文章的内容预览
   showArchiveCount = true
 
-  # 这是我新添加的选项，设置为true时，会在主页中的每篇博文中显示阅读更多
+  # 这是我新添加的选项，设置为true时，会在主页中的每篇文章中显示阅读更多
   # show 'read more' link ?
   readMore = false
 
-  # 是否显示博文中的页脚信息（包含作者，上次修改时间，markdown链接，许可信息）
+  # 是否显示文章中的页脚信息（包含作者，上次修改时间，markdown链接，许可信息）
   postMetaInFooter = false
 
   # 设置页脚中社交链接图标，你可以选择你想要显示的社交链接
@@ -157,52 +196,46 @@ title = "Blog - C'est la vie!"
 
 ### favicon 图标
 
-你可以在**[这里](https://favicon.io/favicon-generator/)**创建 favicon 图标，然后将解压之后的**所有图标文件**放到项目根目录的`static/`中即可
+你可以在[**这里**](https://favicon.io/favicon-generator/)创建 favicon 图标，然后将解压之后的**所有图标文件**放到项目根目录的`static/`中即可
 
 ![Screenshot of Favicon Generator - Text to Favicon - favicon.io](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108152248657.jpg)
 
-### 博文模板
+### 文章模板
 
-- 一般可以在`themes/<主题文件夹>/archetypes/`中找到博文模板，只需要将该文件复制一份，放到项目根目录中的`archetypes/`中即可。
+- 可以在`themes/even/archetypes/`中找到文章模板，只需要将该文件复制一份，放到项目根目录中的`archetypes/`中即可。
 - 建议只保留一些常用的配置项即可
 - 其中的`Draft`配置项默认为`true`，表示该文章为草稿，发布时记得改为`false`
-- 你可以在根目录的`content/post/`中查看所有的博文
+- 你可以在根目录的`content/post/`中查看所有的文章
 
-## 推送到 github
+## 本地调试
 
-### github 访问
-
-[由于一些不可控因素，github 访问速度可能会很慢，此时你就会需要这个了](https://keylol.com/t256816-1-1)
-
-### 创建远程仓库
-
-1. 点击`+`选择`New repository`创建新仓库
-
-![Screenshot of GitHub](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108152320408.jpg)
-
-2. 给仓库起个名字，只能使用`-`连接符，例如：`hello-world`，其他默认
-
-![Screenshot of Create a New Repository](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108152326277.jpg)
-
-3. 获取远程仓库地址后，使用下面的命令将本地项目推送到 github
-
-![Screenshot of whosydd_demo](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108152348179.jpg)
+### 运行hugo
 
 ```bash
-#初始化仓库
-git init
+hugo server -D
+```
 
-#添加远程仓库
-git remote add origin <远程仓库地址>
+> 不加`-D`时，不会显示`Draft`配置项设置为`true`的文章
 
-#添加文件到暂存区
+### 新建文章
+
+```bash
+hugo new post/<文件名>.md
+```
+
+> 你可以在`content/post/`下查看新建的文章
+
+### 推送到github
+
+```bash
+# 添加所有文件到暂存区
 git add .
 
-#提交commit
-git commit -m 'init'
+# 提交commit
+git commit -m 'updated'
 
-#推送
-git push -u origin main
+# push到github
+git push
 ```
 
 ## vercel 部署
@@ -237,6 +270,10 @@ vercel 注册地址：https://vercel.com/signup
 
 ![Screenshot of Project Creation Flow – Vercel (2)](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108160050186.jpg)
 
+6. 如果页面不显示，请点击`View Build Logs`查看`Build Logs`了解详情
+
+![Screenshot of hugo-even-template – Overview – Vercel](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108161158580.jpg)
+
 ### 配置项目
 
 ![Screenshot of demo – Overview – Vercel](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108160100546.jpg)
@@ -245,21 +282,23 @@ vercel 注册地址：https://vercel.com/signup
 
 ##### 注册域名
 
-你可以在https://my.freenom.com/注册一个长达12个月的免费域名，不过这个网站大陆访问有点慢，不太推荐
+你可以在https://my.freenom.com/注册一个长达12个月的免费域名，不过这个网站大陆访问有点慢
+
+> 请注意：这里使用免费域名仅为了演示，如果有需求，建议直接[阿里云](https://wanwang.aliyun.com/?spm=5176.19720258.J_8058803260.153.e9392c4anmPBf1)购买域名
 
 ##### 添加域名
 
-1. 在此页面输入已注册的域名，会弹窗让你选择重定向，选择`Recommended`即可
+1. 在此页面输入已注册的域名，会弹窗让你选择重定向，选择`Recommended`的即可
 
 ![Screenshot of demo – Domains – Vercel](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108160105923.jpg)
 
-2. 域名解析，这里建议直接选择 Nameservers，然后根据提示将`ns1.vercel-dns.com`和`ns2.vercel-dns.com`添加到注册域名网站的相关设置中即可
+##### 域名解析
+
+这里建议直接选择 Nameservers，然后根据提示将`ns1.vercel-dns.com`和`ns2.vercel-dns.com`添加到注册域名网站的相关配置中，然后点击`Refresh`刷新状态，如果都打钩了就可以了，此时就可以通过你填写的域名访问博客了
 
 > 以https://my.freenom.com/注册的域名为例：注册成功后，需要在主页依次点击`Services -> My Domains -> Manage Domain -> Management Tools -> Nameservers`，选择`Use custom nameservers`，添加`ns1.vercel-dns.com`和`ns2.vercel-dns.com`即可
 
 ![Screenshot of demo – Domains – Vercel (2)](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108160134606.jpg)
-
-3. 修改`nameservers`后，点击`Refresh`刷新状态，如果都打钩了就可以了，此时就可以通过你填写的域名访问博客了
 
 ### 删除项目
 
@@ -267,43 +306,12 @@ vercel 注册地址：https://vercel.com/signup
 
 ![Screenshot of demo – Advanced – Vercel](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108160147843.jpg)
 
-## 更新博客
-
-### 新建文章
-
-在项目根目录打开终端，使用`hugo new post/<文件名>.md`命令
-
-### 推送到 github
-
-在项目根目录打开终端，执行以下命令
-
-```bash
-# 添加所有文件到暂存区
-git add .
-
-# 提交commit
-git commit -m 'updated'
-
-# push到github
-git push
-```
-
 ### 自动部署
 
 只要第一次部署成功后，以后只需要将本地新写的文章推送到 github 即可，vercel 会在每次 commit 后自动部署
 
 ## 最后
 
-由于注册域名的网站打开实在是太慢了，所以域名注册相关我写的就比较简略，还望见谅~
-
-## 最最后
-
-如果发现有哪里写的不好或者不对的地方，欢迎 pr~
-
-## 最最最后
-
-希望通过这个教程，大家都能够搭建属于自己的博客~
-
-## 最最最最后
+由于hugo我也是刚刚接触，所以只是简单配置了一下，还有很多地方都不够完善。如果发现有哪里写的不好或者不对的地方，欢迎 pr~
 
 **C'est la vie!**
