@@ -38,11 +38,6 @@ hugo env -v
 
 ## 构建项目
 
-> 如果此时你还没有 github 账号，请先[注册](https://github.com/)一个，方便进行后续操作
->
-> 由于一些不可控因素，github 访问速度可能会很慢，[你可能会需要这个](https://keylol.com/t256816-1-1)
->
-> 由于要使用 git 进行版本控制，如果还没有安装，请前往[这里](https://git-scm.com/)下载安装，使用`git --version`命令查看是否安装成功
 
 ### 项目结构
 
@@ -57,67 +52,9 @@ hugo env -v
 
 ### 使用模板构建项目
 
-1. 只需要在[本仓库](https://github.com/whosydd/hugo-even-template)中点击`Use this template`，设置好仓库名称，就可以根据模板创建自己的项目仓库了
-2. 使用`git clone <仓库地址>`到本地，或者直接下载压缩包，就可以构建本地项目了
-
-![Screenshot of whosydd_blog_ 个人博客](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108161106992.jpg)
-
-### 使用其他主题构建项目（可选）
-
-#### 构建基本项目
-
-```bash
-hugo new site <项目名称>
-```
-
-#### 下载主题
-
-1. 前往[这里](https://themes.gohugo.io/)下载主题，每个主题都会有相应的配置文档，请仔细阅读
-
-#### 添加远程仓库
-
-1. 点击`+`选择`New repository`创建新仓库
-
-![Screenshot of GitHub](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108152320408.jpg)
-
-2. 给仓库起个名字，其他默认
-
-![Screenshot of Create a New Repository](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108152326277.jpg)
-
-3. 获取远程仓库地址后，使用下面的命令将本地项目推送到 github
-
-![Screenshot of whosydd_demo](https://raw.githubusercontent.com/whosydd/images-in-one/main/202108152348179.jpg)
-
-```bash
-#初始化仓库
-git init
-
-#添加远程仓库
-git remote add origin <远程仓库地址>
-
-#添加文件到暂存区
-git add .
-
-#提交commit
-git commit -m 'init'
-
-#推送
-git push -u origin main
-```
-
-#### 血的教训：
-
-**不知道由于何种原因，如果主题文件夹中保留`.git`文件夹，vercel 部署时 99.9%会报错！也就是说，只有将主题文件夹中的所有文件都交由主项目进行 git 管理才可以！**
-
-> 如果你是那 0.1%的幸运星，请**务必**告诉我你是怎么操作的！
->
-> 如果你是那 0.1%的幸运星，请**务必**告诉我你是怎么操作的！
->
-> 如果你是那 0.1%的幸运星，请**务必**告诉我你是怎么操作的！
+只需要在[本仓库](https://github.com/whosydd/hugo-even-template)中点击`Use this template`，设置好仓库名称，就可以根据模板创建自己的项目仓库了
 
 ## 配置选项
-
-> 以下配置项仅针对[Even 主题](https://themes.gohugo.io/themes/hugo-theme-even/)，如果选择使用其他主题，请查阅相应的主题配置文档
 
 ### config.toml
 
